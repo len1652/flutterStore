@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/categories/cateries_controller.dart';
 import 'cart.dart';
+import 'info_product.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   CategoriesController categoriesController = CategoriesController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,74 +61,94 @@ class _HomeViewState extends State<HomeView> {
       itemBuilder: (BuildContext context, int index) {
         return Card(
           elevation: 0.0,
-          child: Container(
+          child: InkWell(
 
-            height: 150,
-            padding: EdgeInsets.all(16),
-            margin: const EdgeInsets.only(bottom: 8.0),
-            child: Column(
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          productsController.products[index]["image"]),
-                      fit: BoxFit.fill,
-                    ),
+            onTap: ((){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => info(
+                    productsController.products[index]["image"],
+                    productsController.products[index]["title"],
+                    productsController.products[index]["description"],
+                    productsController.products[index]["price"]
                   ),
                 ),
-                SizedBox(width: 8),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          productsController.products[index]["title"],
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Expanded(
-                          child: Text(
-                            productsController.products[index]["description"],
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
+              );
 
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "\$${productsController.products[index]["price"]}",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Icon(Icons.star,color: Colors.yellow,),
-                                Icon(Icons.star,color: Colors.yellow,),
-                                Icon(Icons.star,color: Colors.yellow,),
-                                Icon(Icons.star,color: Colors.yellow,),
-                                Icon(Icons.star_half,color: Colors.yellow,),
-                              ],
-                            )
-                          ],
-                        )
-                      ],
+            }),
+            child: Container(
+
+              height: 150,
+              padding: EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 8.0),
+              child: Column(
+                children: [
+                  Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            productsController.products[index]["image"]),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
-                )
-              ],
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            productsController.products[index]["title"],
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Expanded(
+                            child: Text(
+                              productsController.products[index]["description"],
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "\$${productsController.products[index]["price"]}",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(Icons.star,color: Colors.yellow,),
+                                    Icon(Icons.star,color: Colors.yellow,),
+                                    Icon(Icons.star,color: Colors.yellow,),
+                                    Icon(Icons.star,color: Colors.yellow,),
+                                    Icon(Icons.star_half,color: Colors.yellow,),
+                                  ],
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         );
@@ -298,7 +320,7 @@ class _HomeViewState extends State<HomeView> {
       leading: BackButton(),
       elevation: 0,
       title: Text(
-        "NShop",
+        "SHOPPO",
         style: TextStyle(color: Colors.black),
       ),
       actions: [
