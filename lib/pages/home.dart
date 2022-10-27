@@ -168,80 +168,95 @@ class _HomeViewState extends State<HomeView> {
       itemBuilder: (context, index) {
         return Card(
           elevation: 0.0,
-          child: Container(
-            height: 160,
-            padding: EdgeInsets.all(16),
-            margin: const EdgeInsets.only(bottom: 8.0),
-            child: Row(
-              children: [
-                Container(
-                  width: 100,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          productsController.products[index]["image"]),
-                      fit: BoxFit.fill,
-                    ),
+          child: InkWell(
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => info(
+                      productsController.products[index]["image"],
+                      productsController.products[index]["title"],
+                      productsController.products[index]["description"],
+                      productsController.products[index]["price"]
                   ),
                 ),
-                SizedBox(width: 8),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          productsController.products[index]["title"],
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Expanded(
-                          child: Text(
-                            productsController.products[index]["description"],
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-
-                        // Text(
-                        //     productsController.rating[index]["count"]
-                        // ),
-                        IconButton(
-                            onPressed: () {
-
-                            },
-                            icon: Icon(Icons.add_shopping_cart)),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "\$${productsController.products[index]["price"]}",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Icon(Icons.star,color: Colors.yellow,),
-                                Icon(Icons.star,color: Colors.yellow,),
-                                Icon(Icons.star,color: Colors.yellow,),
-                                Icon(Icons.star,color: Colors.yellow,),
-                                Icon(Icons.star_half,color: Colors.yellow,),
-                              ],
-                            )
-                          ],
-                        )
-                      ],
+              );
+            },
+            child: Container(
+              height: 160,
+              padding: EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 8.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            productsController.products[index]["image"]),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
-                )
-              ],
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            productsController.products[index]["title"],
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Expanded(
+                            child: Text(
+                              productsController.products[index]["description"],
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+
+                          // Text(
+                          //     productsController.rating[index]["count"]
+                          // ),
+                          IconButton(
+                              onPressed: () {
+
+                              },
+                              icon: Icon(Icons.add_shopping_cart)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "\$${productsController.products[index]["price"]}",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Icon(Icons.star,color: Colors.yellow,),
+                                  Icon(Icons.star,color: Colors.yellow,),
+                                  Icon(Icons.star,color: Colors.yellow,),
+                                  Icon(Icons.star,color: Colors.yellow,),
+                                  Icon(Icons.star_half,color: Colors.yellow,),
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         );
@@ -301,7 +316,7 @@ class _HomeViewState extends State<HomeView> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4.0),
                       color: index == categoriesController.currentIndex.value
-                          ? Colors.black87
+                          ? Colors.redAccent
                           : Colors.transparent,
                     ),
                     padding: EdgeInsets.symmetric(
@@ -313,7 +328,7 @@ class _HomeViewState extends State<HomeView> {
                       style: TextStyle(
                         color: index == categoriesController.currentIndex.value
                             ? Colors.white
-                            : Colors.black,
+                            : Colors.red,
                       ),
                     ),
                   ),

@@ -168,7 +168,7 @@ class _CartPageState extends State<CartPage> {
                                 horizontal: 32,
                                 vertical: 16.0
                             ),
-                            primary: Colors.black,
+                            primary: Colors.red,
                             elevation:  0,
                             textStyle:  TextStyle(
                               color: Colors.white,
@@ -247,13 +247,13 @@ class _CartPageState extends State<CartPage> {
       title: Text(
         "Cart",
         style: TextStyle(
-          color: Colors.black,
+          color: Colors.redAccent,
         ),
       ),
       actions: [
         IconButton(onPressed: (){}, icon: Icon(Icons.share))
       ],
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(color: Colors.red),
     );
   }
 }

@@ -97,12 +97,12 @@ class info extends StatelessWidget {
     return AppBar(
       backgroundColor: Colors.white,
       centerTitle: true,
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(color: Colors.redAccent),
       leading: BackButton(),
       elevation: 0,
       title: Text(
         "SHOPPO",
-        style: TextStyle(color: Colors.black),
+        style: TextStyle(color: Colors.red),
       ),
     );
   }
