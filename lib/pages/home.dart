@@ -128,6 +128,11 @@ class _HomeViewState extends State<HomeView> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              IconButton(
+                                  onPressed: () {
+
+                                  },
+                                  icon: Icon(Icons.add_shopping_cart)),
                               SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
@@ -164,7 +169,7 @@ class _HomeViewState extends State<HomeView> {
         return Card(
           elevation: 0.0,
           child: Container(
-            height: 120,
+            height: 160,
             padding: EdgeInsets.all(16),
             margin: const EdgeInsets.only(bottom: 8.0),
             child: Row(
@@ -205,6 +210,11 @@ class _HomeViewState extends State<HomeView> {
                         // Text(
                         //     productsController.rating[index]["count"]
                         // ),
+                        IconButton(
+                            onPressed: () {
+
+                            },
+                            icon: Icon(Icons.add_shopping_cart)),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
